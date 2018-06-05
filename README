@@ -1,0 +1,22 @@
+A dhcp & tftp server for raspberry pi network boot
+
+$ cd <>
+$ make
+
+that will build a binary pinetbootd. pinetbootd listen DHCP request and TFTP request.
+pinetbootd only response DHCP request which has a TFTP-SERVER-NAME param.
+
+$ sudo ./pinetbootd eno1 -c 192.168.1.10 -C /tftpboot -u herbert -d
+
+the first parameter is the interface which raspberry pi connected to.
+
+-c <rpi ip>, this ip allocated to raspberry pi, if there's a DHCP Server in
+your LAN env this argument is optional.
+
+-C <tftp dir>, change tftp root dir. this argument is optional.
+
+-u <user>, change user to `user`. this may needed, if you want `user` visit
+tftp boot dir instead of root. this argument is optional.
+
+-d, run as daemon. this argument is optional.
+
